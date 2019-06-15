@@ -52,7 +52,7 @@ setUpdateForm = (e, friend) => {
   return (
     <div className="App">
       <Route exact path='/' component={Home}/>
-      <Route exact path={"/friends-list"} render={(props) =>  <><FriendForm addFriend={this.addFriend} updateFriend={this.updateFriend} activeFriend={this.state.activeFriend} /><FriendsList {...props} setUpdateForm={this.setUpdateForm} deleteFriend={this.deleteFriend} friends={this.state.friends} /></>}  />
+      <Route exact path={"/friends-list"} render={props =>  <><FriendForm addFriend={this.addFriend} updateFriend={this.updateFriend} activeFriend={this.state.activeFriend} /><FriendsList {...props} setUpdateForm={this.setUpdateForm} deleteFriend={this.deleteFriend} friends={this.state.friends} /></>}  />
     </div>
   );
   }

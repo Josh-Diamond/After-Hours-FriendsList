@@ -51,7 +51,6 @@ export default class FriendForm extends Component {
                     <input name='age' value={this.state.friend.age} type='number' placeholder='Age' onChange={this.changeHandler} required />
                     <input name='email' value={this.state.friend.email} type='email' placeholder='E-mail' onChange={this.changeHandler} required />
                     <button>{`${this.state.active ? 'Update' : 'Add Friend'}`}</button>
-
                 </form>
             </div>
         )
