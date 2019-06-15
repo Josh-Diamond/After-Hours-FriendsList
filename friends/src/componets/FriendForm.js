@@ -9,7 +9,8 @@ export default class FriendForm extends Component {
                 name: '',
                 age: '',
                 email: '',
-                id: 0
+           // id put in state is actually being assigned on the backend,
+           // so it has been refactored out to be DRY-er     
             },
             active: false
         }
