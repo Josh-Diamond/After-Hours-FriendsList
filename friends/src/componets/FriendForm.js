@@ -45,7 +45,6 @@ export default class FriendForm extends Component {
         return(
             <div>
                 <NavLink to='/'>Home</NavLink>
-                <NavLink to='/friends-list'>View Friends</NavLink>
                 <form onSubmit={this.submitHandler}>
                     <input name="name" value={this.state.friend.name} type='text' placeholder='Name' onChange={this.changeHandler} required />
                     <input name='age' value={this.state.friend.age} type='number' placeholder='Age' onChange={this.changeHandler} required />

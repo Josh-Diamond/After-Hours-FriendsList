@@ -8,10 +8,6 @@ import Home from './componets/Home'
 
 class App extends React.Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   state = {
     friends: [],
     error: '',
@@ -23,17 +19,17 @@ componentDidMount(){
     .then(res => this.setState({ friends: res.data}))
     .catch(err => this.setState({ error: err}))
 }
-
-addFriend = (e, friend) => {
-  e.preventDefault();
+// addFriend and updateFriend originally took in an event parameter to prevent the default
+// behavior of refreshing the page upon submit, however, they are not submitting!
+// the submitHandler is handling that, so this has been refactored to be cleaner/DRY-er
+addFriend = (friend) => {
   axios
     .post('http://localhost:5000/friends', friend)
     .then(res => this.setState({ friends: res.data}))
     .catch(err => console.log(err))
 }
 
-updateFriend = (e, friend) => {
-  e.preventDefault();
+updateFriend = (friend) => {
   axios
     .put(`http://localhost:5000/friends/${friend.id}`, friend)
     .then(res => this.setState({ friends: res.data }))
@@ -55,10 +51,8 @@ setUpdateForm = (e, friend) => {
   render(){
   return (
     <div className="App">
-    <Route exact path='/' component={Home}/>
-    <Route exact path={"/friends-list"} render={(props) =>  <><FriendForm addFriend={this.addFriend} updateFriend={this.updateFriend} activeFriend={this.state.activeFriend} /><FriendsList {...props} setUpdateForm={this.setUpdateForm} deleteFriend={this.deleteFriend} friends={this.state.friends} /></>}  />
-      
-      
+      <Route exact path='/' component={Home}/>
+      <Route exact path={"/friends-list"} render={(props) =>  <><FriendForm addFriend={this.addFriend} updateFriend={this.updateFriend} activeFriend={this.state.activeFriend} /><FriendsList {...props} setUpdateForm={this.setUpdateForm} deleteFriend={this.deleteFriend} friends={this.state.friends} /></>}  />
     </div>
   );
   }
