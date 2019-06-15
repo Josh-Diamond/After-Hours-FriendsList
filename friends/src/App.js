@@ -19,17 +19,17 @@ componentDidMount(){
     .then(res => this.setState({ friends: res.data}))
     .catch(err => this.setState({ error: err}))
 }
-// addFriend and updateFriend originally took in an event parameter to prevent the default
-// behavior of refreshing the page upon submit, however, they are not submitting!
-// the submitHandler is handling that, so this has been refactored to be cleaner/DRY-er
-addFriend = (friend) => {
+
+addFriend = (e, friend) => {
+  e.preventDefault();
   axios
     .post('http://localhost:5000/friends', friend)
     .then(res => this.setState({ friends: res.data}))
     .catch(err => console.log(err))
 }
 
-updateFriend = (friend) => {
+updateFriend = (e, friend) => {
+  e.preventDefault();
   axios
     .put(`http://localhost:5000/friends/${friend.id}`, friend)
     .then(res => this.setState({ friends: res.data }))

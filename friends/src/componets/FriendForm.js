@@ -2,19 +2,17 @@ import React, { Component } from 'react';
 import {NavLink} from 'react-router-dom'
 
 export default class FriendForm extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+    
+        state = {
             friend: this.props.activeFriend || {
                 name: '',
                 age: '',
-                email: '',
+                email: ''
            // id put in state is actually being assigned on the backend,
            // so it has been refactored out to be DRY-er     
             },
             active: false
         }
-    }
 
     componentDidUpdate(prevProps) {
         if (this.props.activeFriend && prevProps.activeFriend !== this.props.activeFriend) {
