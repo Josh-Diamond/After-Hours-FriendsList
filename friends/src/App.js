@@ -13,6 +13,7 @@ class App extends React.Component {
     error: '',
     activeFriend: null
   }
+  
 componentDidMount(){
   axios
     .get('http://localhost:5000/friends')

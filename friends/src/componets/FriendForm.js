@@ -24,8 +24,9 @@ export default class FriendForm extends Component {
         e.persist();
         this.setState(prevState => ({ friend: {...prevState.friend, [e.target.name]: e.target.value} }))
     }
-
-    submitHandler = (e, friend) => {
+    // friend object coming into updateFriend and addFriend is being brought in through state;
+    // Not necessary to pass in friend object to submitHandler
+    submitHandler = (e) => {
         if (this.state.active) {
             this.props.updateFriend(e, this.state.friend)
         } else {
